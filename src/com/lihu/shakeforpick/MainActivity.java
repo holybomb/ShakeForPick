@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import net.tsz.afinal.FinalBitmap;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,11 +24,13 @@ public class MainActivity extends Activity {
 	}
 	ViewPager pager;
 	ArrayList<View> pagerViews;
+	ImageView shake,forward;
+	private String[] imgs;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		String[] imgs = getResources().getStringArray(R.array.index_imgs);
+		imgs = getResources().getStringArray(R.array.index_imgs);
 		pagerViews = new ArrayList<View>();
 		for(int i =0;i<imgs.length;i++)
 		{
@@ -37,9 +41,24 @@ public class MainActivity extends Activity {
 			holder.text = (TextView) child.findViewById(R.id.index_pager_like_num);
 			FinalBitmap.create(this).display(holder.img,imgs[i]);
 			holder.text.setText(""+(1232*i));
+			child.setTag(holder);
 			pagerViews.add(child);
 		}
 		ImgPagerAdapter adapter = new ImgPagerAdapter(this, pagerViews);
+		shake  = (ImageView) findViewById(R.id.main_shake_btn);
+		shake.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent();
+				int selectId = pager.getCurrentItem();
+				i.putExtra("url", imgs[selectId]);
+				ViewHolder holder = (ViewHolder) pagerViews.get(selectId).getTag();
+				i.putExtra("like", holder.text.getText());
+				i.setClass(MainActivity.this, ShakeResultActivity.class);
+				startActivity(i);
+			}
+		});
 		pager = (ViewPager) findViewById(R.id.main_img_pager);
 		pager.setAdapter(adapter);
 	}
