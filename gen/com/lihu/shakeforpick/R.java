@@ -27,48 +27,79 @@ public final class R {
         public static final int heart=0x7f020000;
         public static final int home=0x7f020001;
         public static final int ic_launcher=0x7f020002;
-        public static final int round_right_arrow=0x7f020003;
-        public static final int shake=0x7f020004;
+        public static final int q_image=0x7f020003;
+        public static final int round_right_arrow=0x7f020004;
+        public static final int search=0x7f020005;
+        public static final int shake=0x7f020006;
+        public static final int trade_box=0x7f020007;
+        public static final int trade_img=0x7f020008;
+        public static final int trade_user=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f090011;
-        public static final int index_pager_item_bg=0x7f09000e;
-        public static final int index_pager_like_num=0x7f09000f;
-        public static final int index_pager_like_num_icon=0x7f090010;
-        public static final int linearLayout1=0x7f090009;
-        public static final int main_forward_btn=0x7f090002;
-        public static final int main_img_pager=0x7f090000;
-        public static final int main_shake_btn=0x7f090001;
-        public static final int shake_result_abort_btn=0x7f09000c;
-        public static final int shake_result_get_btn=0x7f09000a;
-        public static final int shake_result_give_btn=0x7f09000b;
-        public static final int shake_result_info_desc=0x7f090007;
-        public static final int shake_result_info_img=0x7f090006;
-        public static final int shake_result_like_icon=0x7f090003;
-        public static final int shake_result_like_num=0x7f090004;
-        public static final int shake_result_return_home=0x7f090005;
-        public static final int shake_result_title_txt=0x7f090008;
-        public static final int shake_result_usage_ckb=0x7f09000d;
+        public static final int RelativeLayout1=0x7f09001b;
+        public static final int action_settings=0x7f090021;
+        public static final int get_reweard_info=0x7f090002;
+        public static final int imageButton1=0x7f090000;
+        public static final int index_pager_item_bg=0x7f090018;
+        public static final int index_pager_like_num=0x7f090019;
+        public static final int index_pager_like_num_icon=0x7f09001a;
+        public static final int linearLayout1=0x7f09000c;
+        public static final int main_forward_btn=0x7f090005;
+        public static final int main_img_pager=0x7f090003;
+        public static final int main_shake_btn=0x7f090004;
+        public static final int shake_result_abort_btn=0x7f09000f;
+        public static final int shake_result_get_btn=0x7f09000d;
+        public static final int shake_result_give_btn=0x7f09000e;
+        public static final int shake_result_info_desc=0x7f09000a;
+        public static final int shake_result_info_img=0x7f090009;
+        public static final int shake_result_like_icon=0x7f090006;
+        public static final int shake_result_like_num=0x7f090007;
+        public static final int shake_result_return_home=0x7f090008;
+        public static final int shake_result_title_txt=0x7f09000b;
+        public static final int shake_result_usage_ckb=0x7f090010;
+        public static final int trade_main_bottom=0x7f090012;
+        public static final int trade_main_home_btn=0x7f090011;
+        public static final int trade_main_list=0x7f090017;
+        public static final int trade_main_list_item_left=0x7f09001c;
+        public static final int trade_main_list_item_left1=0x7f090001;
+        public static final int trade_main_list_item_left2=0x7f09001d;
+        public static final int trade_main_list_item_right=0x7f09001e;
+        public static final int trade_main_list_item_right1=0x7f09001f;
+        public static final int trade_main_list_item_right2=0x7f090020;
+        public static final int trade_main_mine=0x7f090014;
+        public static final int trade_main_more=0x7f090016;
+        public static final int trade_main_person_centre=0x7f090015;
+        public static final int trade_main_search=0x7f090013;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_shake_result=0x7f030001;
-        public static final int index_pager_item=0x7f030002;
+        public static final int activity_get_reward=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_shake_result=0x7f030002;
+        public static final int activity_trade_main=0x7f030003;
+        public static final int fragment_fragment_trade_list=0x7f030004;
+        public static final int index_pager_item=0x7f030005;
+        public static final int trade_main_list_item=0x7f030006;
+        public static final int trade_main_list_item2=0x7f030007;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int shake_result=0x7f080001;
+        public static final int get_reward=0x7f080000;
+        public static final int main=0x7f080001;
+        public static final int shake_result=0x7f080002;
+        public static final int trade_main=0x7f080003;
     }
     public static final class string {
         public static final int ACTION_SHAKE_FOR_RESULT=0x7f050008;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int hello_blank_fragment=0x7f05000b;
         public static final int hello_world=0x7f050002;
         public static final int index_img_url_1=0x7f050003;
         public static final int index_img_url_2=0x7f050004;
         public static final int index_img_url_3=0x7f050005;
         public static final int index_img_url_4=0x7f050006;
+        public static final int title_activity_get_reward=0x7f050009;
         public static final int title_activity_shake_result=0x7f050007;
+        public static final int title_activity_trade_main=0x7f05000a;
     }
     public static final class style {
         /** 

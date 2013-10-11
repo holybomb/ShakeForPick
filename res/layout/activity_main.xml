@@ -31,6 +31,7 @@
         android:layout_alignBottom="@+id/main_shake_btn"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/main_shake_btn"
+        android:onClick="onForwardClicker"
         android:src="@drawable/round_right_arrow" />
 
 </RelativeLayout>
