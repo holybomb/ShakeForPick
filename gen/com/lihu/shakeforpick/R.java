@@ -10,6 +10,7 @@ package com.lihu.shakeforpick;
 public final class R {
     public static final class array {
         public static final int index_imgs=0x7f060000;
+        public static final int trade_imgs=0x7f060001;
     }
     public static final class attr {
     }
@@ -24,62 +25,69 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int heart=0x7f020000;
-        public static final int home=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int q_image=0x7f020003;
-        public static final int round_right_arrow=0x7f020004;
-        public static final int search=0x7f020005;
-        public static final int shake=0x7f020006;
-        public static final int trade_box=0x7f020007;
-        public static final int trade_img=0x7f020008;
-        public static final int trade_user=0x7f020009;
+        public static final int award_img1=0x7f020000;
+        public static final int heart=0x7f020001;
+        public static final int home=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int q_image=0x7f020004;
+        public static final int round_right_arrow=0x7f020005;
+        public static final int search=0x7f020006;
+        public static final int shake=0x7f020007;
+        public static final int trade_box=0x7f020008;
+        public static final int trade_img=0x7f020009;
+        public static final int trade_user=0x7f02000a;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f09001b;
-        public static final int action_settings=0x7f090021;
-        public static final int get_reweard_info=0x7f090002;
-        public static final int imageButton1=0x7f090000;
-        public static final int index_pager_item_bg=0x7f090018;
-        public static final int index_pager_like_num=0x7f090019;
-        public static final int index_pager_like_num_icon=0x7f09001a;
-        public static final int linearLayout1=0x7f09000c;
-        public static final int main_forward_btn=0x7f090005;
-        public static final int main_img_pager=0x7f090003;
-        public static final int main_shake_btn=0x7f090004;
-        public static final int shake_result_abort_btn=0x7f09000f;
-        public static final int shake_result_get_btn=0x7f09000d;
-        public static final int shake_result_give_btn=0x7f09000e;
-        public static final int shake_result_info_desc=0x7f09000a;
-        public static final int shake_result_info_img=0x7f090009;
-        public static final int shake_result_like_icon=0x7f090006;
-        public static final int shake_result_like_num=0x7f090007;
-        public static final int shake_result_return_home=0x7f090008;
-        public static final int shake_result_title_txt=0x7f09000b;
-        public static final int shake_result_usage_ckb=0x7f090010;
-        public static final int trade_main_bottom=0x7f090012;
-        public static final int trade_main_home_btn=0x7f090011;
-        public static final int trade_main_list=0x7f090017;
-        public static final int trade_main_list_item_left=0x7f09001c;
-        public static final int trade_main_list_item_left1=0x7f090001;
-        public static final int trade_main_list_item_left2=0x7f09001d;
-        public static final int trade_main_list_item_right=0x7f09001e;
-        public static final int trade_main_list_item_right1=0x7f09001f;
-        public static final int trade_main_list_item_right2=0x7f090020;
-        public static final int trade_main_mine=0x7f090014;
-        public static final int trade_main_more=0x7f090016;
-        public static final int trade_main_person_centre=0x7f090015;
-        public static final int trade_main_search=0x7f090013;
+        public static final int RelativeLayout1=0x7f090019;
+        public static final int action_settings=0x7f090026;
+        public static final int get_reweard_home=0x7f090000;
+        public static final int get_reweard_img=0x7f090001;
+        public static final int get_reweard_info=0x7f090003;
+        public static final int get_reweard_title=0x7f090002;
+        public static final int index_pager_item_bg=0x7f09001d;
+        public static final int index_pager_like_num=0x7f09001e;
+        public static final int index_pager_like_num_icon=0x7f09001f;
+        public static final int linearLayout1=0x7f09000d;
+        public static final int main_forward_btn=0x7f090006;
+        public static final int main_img_pager=0x7f090004;
+        public static final int main_shake_btn=0x7f090005;
+        public static final int shake_result_abort_btn=0x7f090010;
+        public static final int shake_result_get_btn=0x7f09000e;
+        public static final int shake_result_give_btn=0x7f09000f;
+        public static final int shake_result_info_desc=0x7f09000b;
+        public static final int shake_result_info_img=0x7f09000a;
+        public static final int shake_result_like_icon=0x7f090007;
+        public static final int shake_result_like_num=0x7f090008;
+        public static final int shake_result_return_home=0x7f090009;
+        public static final int shake_result_title_txt=0x7f09000c;
+        public static final int shake_result_usage_ckb=0x7f090011;
+        public static final int trade_detail_shake=0x7f09001b;
+        public static final int trade_detail_web=0x7f09001a;
+        public static final int trade_main_bottom=0x7f090013;
+        public static final int trade_main_home_btn=0x7f090012;
+        public static final int trade_main_list=0x7f09001c;
+        public static final int trade_main_list_item_left=0x7f090020;
+        public static final int trade_main_list_item_left1=0x7f090021;
+        public static final int trade_main_list_item_left2=0x7f090022;
+        public static final int trade_main_list_item_right=0x7f090023;
+        public static final int trade_main_list_item_right1=0x7f090024;
+        public static final int trade_main_list_item_right2=0x7f090025;
+        public static final int trade_main_mine=0x7f090015;
+        public static final int trade_main_more=0x7f090017;
+        public static final int trade_main_pager=0x7f090018;
+        public static final int trade_main_person_centre=0x7f090016;
+        public static final int trade_main_search=0x7f090014;
     }
     public static final class layout {
         public static final int activity_get_reward=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_shake_result=0x7f030002;
         public static final int activity_trade_main=0x7f030003;
-        public static final int fragment_fragment_trade_list=0x7f030004;
-        public static final int index_pager_item=0x7f030005;
-        public static final int trade_main_list_item=0x7f030006;
-        public static final int trade_main_list_item2=0x7f030007;
+        public static final int fragment_trade_detail=0x7f030004;
+        public static final int fragment_trade_list=0x7f030005;
+        public static final int index_pager_item=0x7f030006;
+        public static final int trade_main_list_item=0x7f030007;
+        public static final int trade_main_list_item2=0x7f030008;
     }
     public static final class menu {
         public static final int get_reward=0x7f080000;

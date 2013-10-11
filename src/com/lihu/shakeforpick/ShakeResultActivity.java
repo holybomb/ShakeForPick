@@ -17,12 +17,13 @@ public class ShakeResultActivity extends Activity {
 	ImageButton homeBtn;
 	ImageView infoImg,home;
 	Button get,give,abort;
+	private String url;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_shake_result);
 		Intent i = getIntent();
-		String url = i.getStringExtra("url");
+		url = i.getStringExtra("url");
 		String like = i.getStringExtra("like");
 		infoImg = (ImageView) findViewById(R.id.shake_result_info_img);
 		FinalBitmap.create(this).display(infoImg, url);
@@ -38,7 +39,13 @@ public class ShakeResultActivity extends Activity {
 	public void onGetBtnClicker(View v)
 	{
 		finish();
-		startActivity(new Intent(this, GetRewardActivity.class));
+		Intent i = getIntent();
+		String title = "恭喜获得电影票一张";
+		String desc = "电影票电影票电影票电影票电影票电影票";
+		i.putExtra("title", title);
+		i.putExtra("desc", desc);
+		i.setClass(this, GetRewardActivity.class);
+		startActivity(i);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

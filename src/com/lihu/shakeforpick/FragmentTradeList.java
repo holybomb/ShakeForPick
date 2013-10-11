@@ -1,12 +1,20 @@
 package com.lihu.shakeforpick;
 
-import android.app.Activity;
-import android.net.Uri;
+import java.util.ArrayList;
+
+import net.tsz.afinal.FinalBitmap;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass. Activities that
@@ -16,16 +24,10 @@ import android.view.ViewGroup;
  * method to create an instance of this fragment.
  * 
  */
-public class FragmentTradeList extends Fragment
-{
-	// TODO: Rename parameter arguments, choose names that match
-	// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-	private static final String ARG_PARAM1 = "param1";
-	private static final String ARG_PARAM2 = "param2";
-	// TODO: Rename and change types of parameters
-	private String mParam1;
-	private String mParam2;
-	private OnFragmentInteractionListener mListener;
+public class FragmentTradeList extends Fragment {
+	public static final String TAG = FragmentTradeList.class.getCanonicalName();
+	ListView tradeList;
+	Context mContext;
 
 	/**
 	 * Use this factory method to create a new instance of this fragment using
@@ -38,80 +40,178 @@ public class FragmentTradeList extends Fragment
 	 * @return A new instance of fragment FragmentTradeList.
 	 */
 	// TODO: Rename and change types and number of parameters
-	public static FragmentTradeList newInstance(String param1, String param2)
-	{
+	public static FragmentTradeList newInstance(Context context,
+			Object... params) {
 		FragmentTradeList fragment = new FragmentTradeList();
 		Bundle args = new Bundle();
-		args.putString(ARG_PARAM1, param1);
-		args.putString(ARG_PARAM2, param2);
 		fragment.setArguments(args);
+		fragment.mContext = context;
 		return fragment;
 	}
 
-	public FragmentTradeList()
-	{
+	public FragmentTradeList() {
 		// Required empty public constructor
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if (getArguments() != null)
-		{
-			mParam1 = getArguments().getString(ARG_PARAM1);
-			mParam2 = getArguments().getString(ARG_PARAM2);
+		if (getArguments() != null) {
+
 		}
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_fragment_trade_list, container, false);
-	}
-
-	// TODO: Rename method, update argument and hook method into UI event
-	public void onButtonPressed(Uri uri)
-	{
-		if (mListener != null)
-		{
-			mListener.onFragmentInteraction(uri);
+		View v = inflater.inflate(R.layout.fragment_trade_list, container,
+				false);
+		String[] urls = getResources().getStringArray(R.array.trade_imgs);
+		ArrayList<ArrayList<String>> tradeListData = new ArrayList<ArrayList<String>>();
+		for (int i = 0; i < 5; i++) {
+			ArrayList<String> perLine = new ArrayList<String>();
+			for (int j = 0; j < 4; j++) {
+				if (i % 2 == 0) {
+					if (j == 3)
+						perLine.add(null);
+					else
+						perLine.add(urls[(i + j) % urls.length]);
+				} else {
+					if (j == 1)
+						perLine.add(null);
+					else
+						perLine.add(urls[(i + j) % urls.length]);
+				}
+			}
+			tradeListData.add(perLine);
 		}
+		TradeMainListAdapter adapter = new TradeMainListAdapter(tradeListData,
+				mContext);
+		tradeList = (ListView) v.findViewById(R.id.trade_main_list);
+		tradeList.setAdapter(adapter);
+		return v;
 	}
 
-	@Override
-	public void onAttach(Activity activity)
-	{
-		super.onAttach(activity);
-		try
-		{
-			mListener = (OnFragmentInteractionListener) activity;
-		} catch (ClassCastException e)
-		{
-			throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
+	class TradeMainListAdapter extends BaseAdapter {
+		ArrayList<ArrayList<String>> mList;
+		Context mContext;
+		FinalBitmap fb;
+
+		class ViewHolder {
+			ImageView left1, left2, right1, right2;
+			LinearLayout left, right;
 		}
-	}
 
-	@Override
-	public void onDetach()
-	{
-		super.onDetach();
-		mListener = null;
-	}
+		public TradeMainListAdapter(ArrayList<ArrayList<String>> mList,
+				Context mContext) {
+			super();
+			this.mList = mList;
+			this.mContext = mContext;
+			fb = FinalBitmap.create(mContext);
+		}
 
-	/**
-	 * This interface must be implemented by activities that contain this
-	 * fragment to allow an interaction in this fragment to be communicated to
-	 * the activity and potentially other fragments contained in that activity.
-	 * <p>
-	 * See the Android Training lesson <a href=
-	 * "http://developer.android.com/training/basics/fragments/communicating.html"
-	 * >Communicating with Other Fragments</a> for more information.
-	 */
-	public interface OnFragmentInteractionListener
-	{
-		// TODO: Update argument type and name
-		public void onFragmentInteraction(Uri uri);
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return mList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ArrayList<String> urls = mList.get(position);
+			ViewHolder holder = new ViewHolder();
+			// if(convertView == null)
+			{
+				if (position % 2 != 0)
+					convertView = LayoutInflater.from(mContext).inflate(
+							R.layout.trade_main_list_item2, null);
+				else
+					convertView = LayoutInflater.from(mContext).inflate(
+							R.layout.trade_main_list_item, null);
+				holder.left = (LinearLayout) convertView
+						.findViewById(R.id.trade_main_list_item_left);
+				holder.right = (LinearLayout) convertView
+						.findViewById(R.id.trade_main_list_item_right);
+				holder.left1 = (ImageView) convertView
+						.findViewById(R.id.trade_main_list_item_left1);
+				holder.left2 = (ImageView) convertView
+						.findViewById(R.id.trade_main_list_item_left2);
+				holder.right1 = (ImageView) convertView
+						.findViewById(R.id.trade_main_list_item_right1);
+				holder.right2 = (ImageView) convertView
+						.findViewById(R.id.trade_main_list_item_right2);
+				convertView.setTag(holder);
+			}
+			// else
+			// {
+			// holder = (ViewHolder) convertView.getTag();
+			// }
+			if (!TextUtils.isEmpty(urls.get(0))) {
+				fb.display(holder.left1, urls.get(0));
+				holder.left1.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						FragmentTradeDetail detail = FragmentTradeDetail
+								.newInstance(TradeMainActivity.instance, "");
+						TradeMainActivity.instance.show(detail);
+					}
+				});
+			}
+
+			if (!TextUtils.isEmpty(urls.get(1))) {
+				fb.display(holder.left2, urls.get(1));
+				holder.left2.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						FragmentTradeDetail detail = FragmentTradeDetail
+								.newInstance(TradeMainActivity.instance, "");
+						TradeMainActivity.instance.show(detail);
+					}
+				});
+			}
+
+			if (!TextUtils.isEmpty(urls.get(2))) {
+				fb.display(holder.right1, urls.get(2));
+				holder.right1.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						FragmentTradeDetail detail = FragmentTradeDetail
+								.newInstance(TradeMainActivity.instance, "");
+						TradeMainActivity.instance.show(detail);
+					}
+				});
+			}
+
+			if (!TextUtils.isEmpty(urls.get(3))) {
+				fb.display(holder.right2, urls.get(3));
+				holder.right2.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						FragmentTradeDetail detail = FragmentTradeDetail
+								.newInstance(TradeMainActivity.instance, "");
+						TradeMainActivity.instance.show(detail);
+					}
+				});
+			}
+			return convertView;
+		}
+
 	}
 }

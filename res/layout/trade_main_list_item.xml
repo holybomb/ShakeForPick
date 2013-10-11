@@ -15,6 +15,7 @@
             android:id="@+id/trade_main_list_item_left1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/trade_img" />
@@ -23,6 +24,7 @@
             android:id="@+id/trade_main_list_item_left2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/heart" />
@@ -41,6 +43,7 @@
             android:id="@+id/trade_main_list_item_right1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/trade_img" />
@@ -49,6 +52,7 @@
             android:id="@+id/trade_main_list_item_right2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
             android:src="@drawable/heart"

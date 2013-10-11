@@ -60,15 +60,13 @@
             android:textSize="13sp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/trade_main_list"
+    <FrameLayout
+        android:id="@+id/trade_main_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/trade_main_bottom"
         android:layout_below="@+id/trade_main_home_btn"
-        android:layout_centerHorizontal="true"
-        tools:listitem="@layout/trade_main_list_item" >
-
-    </ListView>
+        android:layout_centerHorizontal="true" >
+    </FrameLayout>
 
 </RelativeLayout>
