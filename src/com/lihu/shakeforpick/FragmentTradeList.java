@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.animation.ScaleAnimation;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,7 +27,8 @@ import android.widget.ListView;
  * method to create an instance of this fragment.
  * 
  */
-public class FragmentTradeList extends Fragment {
+public class FragmentTradeList extends Fragment
+{
 	public static final String TAG = FragmentTradeList.class.getCanonicalName();
 	ListView tradeList;
 	Context mContext;
@@ -40,8 +44,8 @@ public class FragmentTradeList extends Fragment {
 	 * @return A new instance of fragment FragmentTradeList.
 	 */
 	// TODO: Rename and change types and number of parameters
-	public static FragmentTradeList newInstance(Context context,
-			Object... params) {
+	public static FragmentTradeList newInstance(Context context, Object... params)
+	{
 		FragmentTradeList fragment = new FragmentTradeList();
 		Bundle args = new Bundle();
 		fragment.setArguments(args);
@@ -49,35 +53,40 @@ public class FragmentTradeList extends Fragment {
 		return fragment;
 	}
 
-	public FragmentTradeList() {
+	public FragmentTradeList()
+	{
 		// Required empty public constructor
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
-		if (getArguments() != null) {
-
+		if (getArguments() != null)
+		{
 		}
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	{
 		// Inflate the layout for this fragment
-		View v = inflater.inflate(R.layout.fragment_trade_list, container,
-				false);
+		View v = inflater.inflate(R.layout.fragment_trade_list, container, false);
 		String[] urls = getResources().getStringArray(R.array.trade_imgs);
 		ArrayList<ArrayList<String>> tradeListData = new ArrayList<ArrayList<String>>();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++)
+		{
 			ArrayList<String> perLine = new ArrayList<String>();
-			for (int j = 0; j < 4; j++) {
-				if (i % 2 == 0) {
+			for (int j = 0; j < 4; j++)
+			{
+				if (i % 2 == 0)
+				{
 					if (j == 3)
 						perLine.add(null);
 					else
 						perLine.add(urls[(i + j) % urls.length]);
-				} else {
+				} else
+				{
 					if (j == 1)
 						perLine.add(null);
 					else
@@ -86,25 +95,26 @@ public class FragmentTradeList extends Fragment {
 			}
 			tradeListData.add(perLine);
 		}
-		TradeMainListAdapter adapter = new TradeMainListAdapter(tradeListData,
-				mContext);
+		TradeMainListAdapter adapter = new TradeMainListAdapter(tradeListData, mContext);
 		tradeList = (ListView) v.findViewById(R.id.trade_main_list);
 		tradeList.setAdapter(adapter);
 		return v;
 	}
 
-	class TradeMainListAdapter extends BaseAdapter {
+	class TradeMainListAdapter extends BaseAdapter
+	{
 		ArrayList<ArrayList<String>> mList;
 		Context mContext;
 		FinalBitmap fb;
 
-		class ViewHolder {
+		class ViewHolder
+		{
 			ImageView left1, left2, right1, right2;
 			LinearLayout left, right;
 		}
 
-		public TradeMainListAdapter(ArrayList<ArrayList<String>> mList,
-				Context mContext) {
+		public TradeMainListAdapter(ArrayList<ArrayList<String>> mList, Context mContext)
+		{
 			super();
 			this.mList = mList;
 			this.mContext = mContext;
@@ -112,106 +122,186 @@ public class FragmentTradeList extends Fragment {
 		}
 
 		@Override
-		public int getCount() {
+		public int getCount()
+		{
 			// TODO Auto-generated method stub
 			return mList.size();
 		}
 
 		@Override
-		public Object getItem(int position) {
+		public Object getItem(int position)
+		{
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
-		public long getItemId(int position) {
+		public long getItemId(int position)
+		{
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(int position, View convertView, ViewGroup parent)
+		{
 			ArrayList<String> urls = mList.get(position);
 			ViewHolder holder = new ViewHolder();
 			// if(convertView == null)
 			{
 				if (position % 2 != 0)
-					convertView = LayoutInflater.from(mContext).inflate(
-							R.layout.trade_main_list_item2, null);
+					convertView = LayoutInflater.from(mContext).inflate(R.layout.trade_main_list_item2, null);
 				else
-					convertView = LayoutInflater.from(mContext).inflate(
-							R.layout.trade_main_list_item, null);
-				holder.left = (LinearLayout) convertView
-						.findViewById(R.id.trade_main_list_item_left);
-				holder.right = (LinearLayout) convertView
-						.findViewById(R.id.trade_main_list_item_right);
-				holder.left1 = (ImageView) convertView
-						.findViewById(R.id.trade_main_list_item_left1);
-				holder.left2 = (ImageView) convertView
-						.findViewById(R.id.trade_main_list_item_left2);
-				holder.right1 = (ImageView) convertView
-						.findViewById(R.id.trade_main_list_item_right1);
-				holder.right2 = (ImageView) convertView
-						.findViewById(R.id.trade_main_list_item_right2);
+					convertView = LayoutInflater.from(mContext).inflate(R.layout.trade_main_list_item, null);
+				holder.left = (LinearLayout) convertView.findViewById(R.id.trade_main_list_item_left);
+				holder.right = (LinearLayout) convertView.findViewById(R.id.trade_main_list_item_right);
+				holder.left1 = (ImageView) convertView.findViewById(R.id.trade_main_list_item_left1);
+				holder.left2 = (ImageView) convertView.findViewById(R.id.trade_main_list_item_left2);
+				holder.right1 = (ImageView) convertView.findViewById(R.id.trade_main_list_item_right1);
+				holder.right2 = (ImageView) convertView.findViewById(R.id.trade_main_list_item_right2);
 				convertView.setTag(holder);
 			}
 			// else
 			// {
 			// holder = (ViewHolder) convertView.getTag();
 			// }
-			if (!TextUtils.isEmpty(urls.get(0))) {
+			if (!TextUtils.isEmpty(urls.get(0)))
+			{
 				fb.display(holder.left1, urls.get(0));
-				holder.left1.setOnClickListener(new OnClickListener() {
-
+				holder.left1.setOnTouchListener(new OnTouchListener()
+				{
 					@Override
-					public void onClick(View v) {
-						FragmentTradeDetail detail = FragmentTradeDetail
-								.newInstance(TradeMainActivity.instance, "");
-						TradeMainActivity.instance.show(detail);
+					public boolean onTouch(View v, MotionEvent event)
+					{
+						int act = event.getAction();
+						switch (act)
+						{
+						case MotionEvent.ACTION_DOWN:
+							v.startAnimation(getScaleSmallAnim());
+							break;
+						case MotionEvent.ACTION_MOVE:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						case MotionEvent.ACTION_UP:
+							v.startAnimation(getScaleBigAnim());
+							FragmentTradeDetail detail = FragmentTradeDetail.newInstance(TradeMainActivity.instance, "");
+							TradeMainActivity.instance.show(detail);
+							break;
+						default:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						}
+						return true;
 					}
 				});
 			}
-
-			if (!TextUtils.isEmpty(urls.get(1))) {
+			if (!TextUtils.isEmpty(urls.get(1)))
+			{
 				fb.display(holder.left2, urls.get(1));
-				holder.left2.setOnClickListener(new OnClickListener() {
-
+				holder.left2.setOnTouchListener(new OnTouchListener()
+				{
 					@Override
-					public void onClick(View v) {
-						FragmentTradeDetail detail = FragmentTradeDetail
-								.newInstance(TradeMainActivity.instance, "");
-						TradeMainActivity.instance.show(detail);
+					public boolean onTouch(View v, MotionEvent event)
+					{
+						int act = event.getAction();
+						switch (act)
+						{
+						case MotionEvent.ACTION_DOWN:
+							v.startAnimation(getScaleSmallAnim());
+							break;
+						case MotionEvent.ACTION_MOVE:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						case MotionEvent.ACTION_UP:
+							v.startAnimation(getScaleBigAnim());
+							FragmentTradeDetail detail = FragmentTradeDetail.newInstance(TradeMainActivity.instance, "");
+							TradeMainActivity.instance.show(detail);
+							break;
+						default:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						}
+						return true;
 					}
 				});
 			}
-
-			if (!TextUtils.isEmpty(urls.get(2))) {
+			if (!TextUtils.isEmpty(urls.get(2)))
+			{
 				fb.display(holder.right1, urls.get(2));
-				holder.right1.setOnClickListener(new OnClickListener() {
-
+				holder.right1.setOnTouchListener(new OnTouchListener()
+				{
 					@Override
-					public void onClick(View v) {
-						FragmentTradeDetail detail = FragmentTradeDetail
-								.newInstance(TradeMainActivity.instance, "");
-						TradeMainActivity.instance.show(detail);
+					public boolean onTouch(View v, MotionEvent event)
+					{
+						int act = event.getAction();
+						switch (act)
+						{
+						case MotionEvent.ACTION_DOWN:
+							v.startAnimation(getScaleSmallAnim());
+							break;
+						case MotionEvent.ACTION_MOVE:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						case MotionEvent.ACTION_UP:
+							v.startAnimation(getScaleBigAnim());
+							FragmentTradeDetail detail = FragmentTradeDetail.newInstance(TradeMainActivity.instance, "");
+							TradeMainActivity.instance.show(detail);
+							break;
+						default:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						}
+						return true;
 					}
 				});
 			}
-
-			if (!TextUtils.isEmpty(urls.get(3))) {
+			if (!TextUtils.isEmpty(urls.get(3)))
+			{
 				fb.display(holder.right2, urls.get(3));
-				holder.right2.setOnClickListener(new OnClickListener() {
-
+				holder.right2.setOnTouchListener(new OnTouchListener()
+				{
 					@Override
-					public void onClick(View v) {
-						FragmentTradeDetail detail = FragmentTradeDetail
-								.newInstance(TradeMainActivity.instance, "");
-						TradeMainActivity.instance.show(detail);
+					public boolean onTouch(View v, MotionEvent event)
+					{
+						int act = event.getAction();
+						switch (act)
+						{
+						case MotionEvent.ACTION_DOWN:
+							v.startAnimation(getScaleSmallAnim());
+							break;
+						case MotionEvent.ACTION_MOVE:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						case MotionEvent.ACTION_UP:
+							v.startAnimation(getScaleBigAnim());
+							FragmentTradeDetail detail = FragmentTradeDetail.newInstance(TradeMainActivity.instance, "");
+							TradeMainActivity.instance.show(detail);
+							break;
+						default:
+							v.startAnimation(getScaleBigAnim());
+							break;
+						}
+						return true;
 					}
 				});
 			}
 			return convertView;
 		}
+	}
 
+	public ScaleAnimation getScaleSmallAnim()
+	{
+		ScaleAnimation scale = new ScaleAnimation(1.0f, 0.95f, 1.0f, 0.95f, ScaleAnimation.RELATIVE_TO_SELF,0.5f,ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+		scale.setFillAfter(true);
+		scale.setDuration(10);
+		return scale;
+	}
+
+	public ScaleAnimation getScaleBigAnim()
+	{
+		ScaleAnimation scale = new ScaleAnimation(0.95f, 1.0f, 0.95f, 1.0f, ScaleAnimation.RELATIVE_TO_SELF,0.5f,ScaleAnimation.RELATIVE_TO_SELF, 0.5f);
+		scale.setFillAfter(true);
+		scale.setDuration(10);
+		return scale;
 	}
 }

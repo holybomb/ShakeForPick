@@ -1,5 +1,7 @@
 package com.lihu.shakeforpick;
 
+import com.google.zxing.qrcode.QRCodeWriter;
+
 import net.tsz.afinal.FinalBitmap;
 import android.app.Activity;
 import android.content.Intent;
@@ -25,7 +27,7 @@ public class GetRewardActivity extends Activity
 		TextView descTxt = (TextView) findViewById(R.id.get_reweard_info);
 		descTxt.setText(desc);
 		ImageView img = (ImageView) findViewById(R.id.get_reweard_img);
-		FinalBitmap.create(this).display(img, url);
+		img.setImageBitmap(BitmapUtils.createQRImageByText(this, url));
 	}
 
 	@Override

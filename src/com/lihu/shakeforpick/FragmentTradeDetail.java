@@ -33,7 +33,7 @@ public class FragmentTradeDetail extends Fragment implements
 	Context mContext;
 	private WebView webview;
 	private ImageView shake;
-
+	boolean isCanShake;
 	/**
 	 * Use this factory method to create a new instance of this fragment using
 	 * the provided parameters.
@@ -49,6 +49,10 @@ public class FragmentTradeDetail extends Fragment implements
 			Object... params) {
 		FragmentTradeDetail fragment = new FragmentTradeDetail();
 		Bundle args = new Bundle();
+		if(params[0] instanceof Boolean)
+			fragment.isCanShake = (Boolean) params[0];
+		else
+			fragment.isCanShake = true;
 		fragment.setArguments(args);
 		fragment.mContext = context;
 		return fragment;
@@ -79,21 +83,28 @@ public class FragmentTradeDetail extends Fragment implements
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.loadUrl("http://a.m.tmall.com/i14005708808.htm");
 		shake = (ImageView) v.findViewById(R.id.trade_detail_shake);
-		shake.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent();
-				String title ="恭喜获得优惠劵一张";
-				String desc = "优惠劵优惠劵优惠劵优惠劵优惠劵优惠劵优惠劵优惠劵";
-				String url = "http://t1.baidu.com/it/u=3257871685,4053540849&fm=90&gp=0.jpg";
-				i.putExtra("title", title);
-				i.putExtra("desc", desc);
-				i.putExtra("url", url);
-				i.setClass(mContext, GetRewardActivity.class);
-				startActivity(i);
-			}
-		});
+		if(isCanShake)
+		{
+			shake.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent i = new Intent();
+					String title ="恭喜获得优惠劵一张";
+					String desc = "优惠劵优惠劵优惠劵优惠劵优惠劵优惠劵优惠劵优惠劵";
+					String url = "http://t1.baidu.com/it/u=3257871685,4053540849&fm=90&gp=0.jpg";
+					i.putExtra("title", title);
+					i.putExtra("desc", desc);
+					i.putExtra("url", url);
+					i.setClass(mContext, GetRewardActivity.class);
+					startActivity(i);
+				}
+			});
+		}
+		else
+		{
+			shake.setVisibility(View.GONE);
+		}
 		return v;
 	}
 	// Sensor绠＄悊鍣�

@@ -39,6 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/trade_box"
+            android:onClick="onMyItemBtnClicker"
             android:text="我的奖品"
             android:textSize="13sp" />
 
@@ -66,7 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/trade_main_bottom"
         android:layout_below="@+id/trade_main_home_btn"
-        android:layout_centerHorizontal="true" >
+        android:layout_centerHorizontal="true"
+        android:padding="5dp" >
+
     </FrameLayout>
 
 </RelativeLayout>

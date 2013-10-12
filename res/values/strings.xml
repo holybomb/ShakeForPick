@@ -25,7 +25,26 @@
         <item>http://a1.att.hudong.com/46/37/01300192797514132185375743376.jpg</item>
         <item>http://a2.att.hudong.com/72/15/01300001087771130641159913208.jpg</item>
     </string-array>
-
+	<string-array name="my_item_imgs">
+        <item>http://ww3.sinaimg.cn/wap176/6b6e567cjw1dkntr9vs99j.jpg</item>
+        <item>http://ww2.sinaimg.cn/wap176/6b6e567cjw1dm247jyytvj.jpg</item>
+        <item>http://a3.att.hudong.com/24/81/01300000345992125448816150141_s.jpg</item>
+        <item>http://img1.3lian.com/img2011/04/28/s/264.jpg</item>
+        <item>http://i2.hoopchina.com.cn/user/248/5047248/13119620460s.jpg</item>
+        <item>http://a3.att.hudong.com/85/72/01300000383278126708724981566.jpg</item>
+        <item>http://a1.att.hudong.com/46/37/01300192797514132185375743376.jpg</item>
+        <item>http://a2.att.hudong.com/72/15/01300001087771130641159913208.jpg</item>
+    </string-array>
+    <string-array name="my_item_descs">
+        <item>描述</item>
+        <item>描述</item>
+        <item>描述</item>
+        <item>描述</item>
+        <item>描述</item>
+        <item>描述</item>
+        <item>描述</item>
+        <item>描述</item>
+    </string-array>
     <string name="title_activity_shake_result">ShakeResultActivity</string>
     <string name="ACTION_SHAKE_FOR_RESULT">SHAKE_FOR_RESULT</string>
     <string name="title_activity_get_reward">GetRewardActivity</string>
